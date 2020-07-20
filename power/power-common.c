@@ -94,9 +94,6 @@ void power_hint(power_hint_t hint, void* data) {
                 }
             }
             break;
-        case POWER_HINT_SET_PROFILE:
-            ALOGI("set profile power hint not handled in power_hint_override");
-            break;
         default:
             break;
     }
