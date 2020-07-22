@@ -21,7 +21,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 # Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/pixeldust/configs/pixeldust_phone.mk)
+-include vendor/pixeldust/configs/system_optional.mk
 
 # Inherit from ugglite device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
@@ -31,8 +32,8 @@ TARGET_BOOT_ANIMATION_RES := 720
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := ugglite
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_MODEL := Redmi Note 5A/Y1 Lite
-PRODUCT_NAME := lineage_ugglite
+PRODUCT_MODEL := Redmi Note 5A
+PRODUCT_NAME := pixeldust_ugglite
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
@@ -44,3 +45,13 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="coral-user 10 QQ3A.200705.002 6506677 release-keys"
 
 BUILD_FINGERPRINT := "google/coral/coral:10/QQ3A.200705.002/6506677:user/release-keys"
+
+export TARGET_DEVICE=ugglite
+
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/bootanimation/720.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip \
+    vendor/pixeldust/prebuilt/bootanimation/720_black.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation-dark.zip
+
+PRODUCT_PACKAGES += \
+    messaging
+
